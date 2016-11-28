@@ -4,11 +4,11 @@ class App < Sinatra::Base
   enable :sessions
 
   get '/' do
-    redirect to('/set')
+    "key =" << session[:key].inspect
   end
 
   get '/set' do
-    params[:key] = params[:value]
+    session[:key] = params[:key]
   end
 
   # start the server if ruby file executed directly
