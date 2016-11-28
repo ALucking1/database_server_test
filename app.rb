@@ -1,14 +1,22 @@
 require 'sinatra/base'
+require './lib/query'
 
 class App < Sinatra::Base
   enable :sessions
 
   get '/' do
-    "key =" << session[:key].inspect
+    @query = Query.new
   end
 
   get '/set' do
-    session[:key] = params[:key]
+    @query = Query.new
+    @query.items[params.keys[0]] = params[params.keys[0]]
+    session[:query] = @query
+  end
+
+  get '/get' do
+    @query = session[:query]
+    @query.items[params[params.keys[0]]]
   end
 
   # start the server if ruby file executed directly

@@ -11,10 +11,3 @@ feature 'routes' do
       expect(page).to have_current_path("/set")
   end
 end
-
-# feature '' do
-#   scenario 'with a key and value' do
-#     visit('/set')
-#       expect(page).to have_current_path("/set?key=value")
-#   end
-# end
